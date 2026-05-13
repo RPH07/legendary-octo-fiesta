@@ -1,169 +1,250 @@
 <!DOCTYPE html>
 
-<html class="light" lang="id">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reynaldi Putra Hasli - Portfolio</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-background": "#191c1d",
-                        "outline": "#747878",
-                        "outline-variant": "#c4c7c7",
-                        "inverse-on-surface": "#f0f1f2",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed": "#1c1b1a",
-                        "surface-container-low": "#f3f4f5",
-                        "surface": "#f8f9fa",
-                        "tertiary-fixed-dim": "#cac6c3",
-                        "secondary-fixed": "#dbe1ff",
-                        "surface-bright": "#f8f9fa",
-                        "inverse-surface": "#2e3132",
-                        "primary": "#000000",
-                        "background": "#f8f9fa",
-                        "surface-container-lowest": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "inverse-primary": "#c8c6c5",
-                        "on-surface": "#191c1d",
-                        "surface-tint": "#5f5e5e",
-                        "surface-container": "#edeeef",
-                        "on-secondary-fixed": "#00174b",
-                        "on-primary": "#ffffff",
-                        "secondary-fixed-dim": "#b4c5ff",
-                        "secondary": "#0051d5",
-                        "primary-fixed": "#e5e2e1",
-                        "tertiary-container": "#1c1b1a",
-                        "tertiary": "#000000",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-container": "#868381",
-                        "tertiary-fixed": "#e6e1df",
-                        "primary-container": "#1c1b1b",
-                        "surface-dim": "#d9dadb",
-                        "on-primary-container": "#858383",
-                        "surface-variant": "#e1e3e4",
-                        "surface-container-highest": "#e1e3e4",
-                        "on-primary-fixed": "#1c1b1b",
-                        "on-secondary-fixed-variant": "#003ea8",
-                        "error": "#ba1a1a",
-                        "secondary-container": "#316bf3",
-                        "on-tertiary": "#ffffff",
-                        "on-secondary-container": "#fefcff",
-                        "on-surface-variant": "#444748",
-                        "primary-fixed-dim": "#c8c6c5",
-                        "on-tertiary-fixed-variant": "#484645",
-                        "on-primary-fixed-variant": "#474646",
-                        "on-secondary": "#ffffff",
-                        "surface-container-high": "#e7e8e9"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "unit": "8px",
-                        "section-gap": "64px",
-                        "gutter": "24px",
-                        "container-max": "640px",
-                        "margin-mobile": "20px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "label-sm": ["Inter"],
-                        "display-lg-mobile": ["Inter"],
-                        "body-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "label-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500" }],
-                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
-                    }
-                },
-            },
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .soft-shadow {
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.04);
-        }
-    </style>
+    <style src="conf/style.css"></style>
+    <script src="conf/tailwind.config.js"></script>
 </head>
 
-<body class="flex flex-col min-h-screen">
-    <!-- Main Content Canvas -->
-    <main class="flex-grow flex items-center justify-center px-margin-mobile py-section-gap">
+<body class="bg-bg text-text-primary font-mono antialiased selection:bg-accent selection:text-bg">
+
+    <!-- ── Navbar ─────────────────────────────────── -->
+    <nav class="bg-bg/80 backdrop-blur-md sticky top-0 z-50 border-b border-border">
         <div
-            class="w-full max-w-container-max bg-surface-container-lowest rounded-xl p-unit sm:p-gutter soft-shadow text-center">
-            <!-- Visual Element: Status Badge & Abstract Graphic -->
-            <div class="mb-gutter flex flex-col items-center gap-4">
-                <div class="bg-[#EFF6FF] text-secondary px-4 py-1 rounded-full inline-flex items-center gap-2 mb-4">
-                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                    <span class="font-label-sm text-label-sm font-semibold">In Development</span>
-                </div>
-                <div class="relative w-48 h-48 mx-auto mb-2 opacity-80">
-                    <img alt="Minimalist abstract illustration"
-                        class="w-full h-full object-contain filter grayscale opacity-40 mix-blend-multiply"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEP5N04cwN5zUFb_ADhpNmEjnyHNg5E_DqbyM6a7FlrvWjVvyEj31pe4ldunkq0NjlXdBSQGBYhGT2flSdPgcuYkFMqqBpGQzIc56Btsl42dNMLeSfufFicSBAlV0avSDQOuA3dlr1mG3Twm9pgClE4WC5araYRszKrWBxYcHoOwbGZ7q9ID_wONI_YIF3qwVqF4refaSwlN6e3pHa-UeF7MMZxBJSnUPWzxIuGFEWb6HSzt24M4KNZH2X9c2yJ809N20ru5f4t50" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
-                </div>
+            class="flex justify-between items-center h-[52px] px-gutter-mobile md:px-gutter-desktop max-w-[680px] mx-auto">
+            <div class="text-heading font-bold text-primary">
+                RPH<span class="cursor-blink text-accent">_</span>
             </div>
-            <!-- Heading & Subtext -->
-            <h1
-                class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-unit mt-2">
-                Coming Soon
-            </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[500px] mx-auto mb-section-gap">
-                Portfolio baru sedang dikerjakan. Kembali segera untuk melihat project dan skill terbaru saya.
-            </p>
+            <ul class="hidden md:flex gap-6 text-nav uppercase tracking-widest">
+                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#about">//
+                        about</a></li>
+                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#experience">//
+                        exp</a></li>
+                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#projects">//
+                        projects</a></li>
+                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#stack">//
+                        stack</a></li>
+                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#contact">//
+                        contact</a></li>
+            </ul>
+            <button id="menuToggle"
+                class="md:hidden text-nav uppercase tracking-widest text-text-muted hover:text-accent transition-colors duration-100">
+                [menu]
+            </button>
         </div>
-    </main>
-    <!-- Footer -->
-    <footer class="bg-surface dark:bg-background full-width bottom-0">
-        <div
-            class="flex flex-col md:flex-row justify-between items-center py-section-gap w-full max-w-container-max mx-auto px-margin-mobile border-t border-surface-container-high">
-            <div class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline mb-4 md:mb-0">
-                © 2026 RPH. All rights reserved.
+    </nav>
+
+    <!-- ── Mobile Menu Overlay ────────────────────── -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-bg flex-col justify-center px-gutter-mobile">
+        <button id="menuClose"
+            class="absolute top-4 right-6 text-nav uppercase tracking-widest text-text-muted hover:text-accent transition-colors duration-100">[close]</button>
+        <ul class="flex flex-col gap-8">
+            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
+                    href="#about" onclick="closeMenu()"># about</a></li>
+            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
+                    href="#experience" onclick="closeMenu()"># experience</a></li>
+            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
+                    href="#projects" onclick="closeMenu()"># projects</a></li>
+            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
+                    href="#stack" onclick="closeMenu()"># stack</a></li>
+            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
+                    href="#contact" onclick="closeMenu()"># contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ── Main ───────────────────────────────────── -->
+    <main class="max-w-[680px] mx-auto px-gutter-mobile md:px-gutter-desktop pb-section-gap-desktop">
+
+        <!-- Hero -->
+        <section class="pt-12 md:pt-24 mb-section-gap-mobile md:mb-section-gap-desktop">
+            <h1 class="text-hero text-primary mb-6">Reynaldi<br />Putra Hasli</h1>
+            <div class="w-full h-px bg-border mb-6"></div>
+            <p class="text-tagline text-text-secondary mb-8 max-w-lg">
+                Membangun pengalaman web yang bersih, cepat, dan efisien.<br />
+                Fokus pada desain minimalis dan arsitektur kode yang solid<br />
+                untuk menciptakan produk digital yang berdampak.
+            </p>
+            <div class="flex flex-wrap gap-6 text-meta">
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="mailto:reynaldiputrahasli@gmail.com">→ email</a>
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener">→ linkedin</a>
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="https://github.com/RPH07" target="_blank" rel="noopener">→ github</a>
             </div>
-            <div class="flex gap-gutter">
-                <a class="inline-flex items-center gap-2 text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-on-background transition-colors opacity-100 hover:opacity-70"
-                    href="https://www.linkedin.com/in/reynaldi-putra-hasli/" target="_blank" rel="noopener noreferrer">
-                    <span class="material-symbols-outlined text-[20px]">business</span>
+        </section>
+
+        <!-- About -->
+        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="about">
+            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
+                <span class="text-accent">//</span> about
+            </h2>
+            <div class="text-body text-text-secondary space-y-4 max-w-[580px]">
+                <p>
+                    Saya adalah seorang pengembang web dengan spesialisasi dalam front-end dan back-end modern.
+                    Pendekatan saya terhadap desain dan pengembangan selalu mengutamakan fungsi, kejelasan, dan
+                    performa.
+                </p>
+                <p>
+                    Saya percaya bahwa antarmuka terbaik adalah yang tidak mengganggu pengguna, melainkan
+                    memfasilitasi tujuan mereka dengan mulus. Saat ini sedang memperdalam keahlian di bidang
+                    Frontend Development melalui program magang nasional.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="experience">
+            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
+                <span class="text-accent">//</span> experience
+            </h2>
+            <div class="space-y-10">
+
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8">
+                    <div class="text-meta text-text-muted shrink-0 md:w-36 pt-1">[Nov 2025 – skrg]</div>
+                    <div>
+                        <h3 class="text-heading text-primary mb-1">Web Developer Intern</h3>
+                        <p class="text-meta text-accent mb-3">PT Rajawali Cemerlang Abadi</p>
+                        <p class="text-body text-text-secondary pl-4 border-l border-border">
+                            Membangun custom WordPress theme dari nol untuk meningkatkan fleksibilitas branding
+                            perusahaan, serta mengoptimalkan performa dan responsivitas website di berbagai perangkat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8">
+                    <div class="text-meta text-text-muted shrink-0 md:w-36 pt-1">[Agu – Nov 2024]</div>
+                    <div>
+                        <h3 class="text-heading text-primary mb-1">Frontend Developer Intern</h3>
+                        <p class="text-meta text-accent mb-3">PT Stucel Media Kreatif</p>
+                        <p class="text-body text-text-secondary pl-4 border-l border-border">
+                            Melakukan slicing desain Figma menjadi halaman web yang pixel-perfect dan berkolaborasi
+                            dalam tim menggunakan Git untuk manajemen workflow pengembangan yang rapi.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="projects">
+            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
+                <span class="text-accent">//</span> projects
+            </h2>
+            <div class="border-t border-border">
+
+                <div class="py-6 border-b border-border group">
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-meta text-text-muted shrink-0">01.</span>
+                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
+                            E-Cash Book</h3>
+                    </div>
+                    <p class="text-body text-text-secondary mb-2 pl-8">
+                        Aplikasi pelacak keuangan mobile untuk manajemen multi-saldo (Tabungan &amp; Giro)
+                        dengan fitur pencatatan transaksi real-time dan integrasi laporan berbasis cloud.
+                    </p>
+                    <p class="text-meta text-text-muted pl-8">React Native (Expo), API</p>
+                    <button
+                        onclick="openLightbox('https://ik.imagekit.io/vlfaghs79/Media/profile.jpeg?updatedAt=1778466903562')"
+                        class="text-meta text-accent hover:underline">[Preview]</button>
+                </div>
+
+                <div class="py-6 border-b border-border group">
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-meta text-text-muted shrink-0">02.</span>
+                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
+                            MasjidHub</h3>
+                    </div>
+                    <p class="text-body text-text-secondary mb-2 pl-8">
+                        Aplikasi web manajemen masjid dengan fitur notifikasi real-time untuk penerimaan
+                        dan penolakan donasi menggunakan Socket.IO.
+                    </p>
+                    <p class="text-meta text-text-muted pl-8">React.js, Node.js, Express, MySQL</p>
+                </div>
+
+                <div class="py-6 border-b border-border group">
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-meta text-text-muted shrink-0">03.</span>
+                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
+                            Custom WordPress Theme</h3>
+                    </div>
+                    <p class="text-body text-text-secondary mb-2 pl-8">
+                        Pengembangan tema WordPress kustom dari nol untuk menggantikan template bawaan,
+                        berfokus pada performa yang ringan dan antarmuka dinamis.
+                    </p>
+                    <p class="text-meta text-text-muted pl-8">PHP, JavaScript, CSS</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Stack -->
+        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="stack">
+            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
+                <span class="text-accent">//</span> stack &amp; tools
+            </h2>
+            <p class="text-meta text-text-secondary leading-loose">
+                html, css, javascript, typescript, php, python,<br />
+                react.js, vue.js, react native, bootstrap,<br />
+                git, figma, wordpress, mysql
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="contact">
+            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
+                <span class="text-accent">//</span> contact
+            </h2>
+            <div class="bg-surface p-8 border border-border">
+                <p class="text-body text-text-secondary mb-6">
+                    Tertarik untuk berdiskusi lebih lanjut, kolaborasi project,
+                    atau sekadar menyapa? Jangan ragu untuk menghubungi saya.
+                </p>
+                <a class="inline-block bg-primary text-bg text-cta py-3 px-6 hover:bg-accent transition-colors duration-150"
+                    href="mailto:hi@buildwithrey.my.id">
+                    [ kirim pesan → ]
                 </a>
-                <a class="inline-flex items-center gap-2 text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-on-background transition-colors opacity-100 hover:opacity-70"
-                    href="https://github.com/RPH07" target="_blank" rel="noopener noreferrer">
-                    <span class="material-symbols-outlined text-[20px]">terminal</span>
-                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── Footer ─────────────────────────────────── -->
+    <footer class="border-t border-border py-10">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center max-w-[680px] mx-auto px-gutter-mobile md:px-gutter-desktop gap-4">
+            <div class="text-label text-text-muted">
+                © <script>document.write(new Date().getFullYear())</script> reynaldi putra hasli<span class="cursor-blink text-accent">_</span>
+            </div>
+            <div class="flex gap-6 text-meta">
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="https://github.com/RPH07" target="_blank" rel="noopener">github</a>
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener">linkedin</a>
+                <a class="text-text-muted hover:text-accent transition-colors duration-100"
+                    href="mailto:reynaldiputrahasli@gmail.com">email</a>
             </div>
         </div>
     </footer>
+
+    <script src="conf/script.js"></script>
+
+    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-primary/80
+        backdrop-blur-sm items-center flex justify-center p-8"
+        onclick="closeLightbox()">
+        <img src="" alt="" id="lighbox-img" class="max-w-full max-h-full object-contain border border-border" />
+    </div>
+
 </body>
 
 </html>
