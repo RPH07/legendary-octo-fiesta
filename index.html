@@ -1,273 +1,570 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Reynaldi Putra Hasli - Portfolio</title>
-    <link rel="icon" href="asset/favicon.ico">
-    <meta name="theme-color" content="#F7F7F7"/>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="conf/style.css" />
-    <script src="conf/tailwind.config.js"></script>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Reynaldi Putra Hasli — Frontend Developer</title>
+  <link rel="icon" href="asset/favicon.ico" />
+  <meta name="theme-color" content="#FFFFFF" />
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="conf/tailwind.config.js"></script>
+  <link rel="stylesheet" href="conf/style.css" />
+
+  <!-- Splide.js core CSS (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css" />
 </head>
 
-<body class="bg-bg text-text-primary font-mono antialiased selection:bg-accent selection:text-bg">
+<body class="bg-nb-bg text-nb-text font-display selection:bg-nb-black selection:text-nb-yellow overflow-x-hidden">
 
-    <!-- ── Navbar ─────────────────────────────────── -->
-    <nav class="bg-bg/80 backdrop-blur-md sticky top-0 z-50 border-b border-border">
-        <div
-            class="flex justify-between items-center h-[52px] px-gutter-mobile md:px-gutter-desktop max-w-[680px] mx-auto">
-            <div class="text-heading font-bold text-primary">
-                RPH<span class="cursor-blink text-accent">_</span>
-            </div>
-            <ul class="hidden md:flex gap-6 text-nav uppercase tracking-widest">
-                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#about">//
-                        about</a></li>
-                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#experience">//
-                        exp</a></li>
-                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#projects">//
-                        projects</a></li>
-                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#stack">//
-                        stack</a></li>
-                <li><a class="text-text-muted hover:text-accent transition-colors duration-100" href="#contact">//
-                        contact</a></li>
-            </ul>
-            <button id="menuToggle"
-                class="md:hidden text-nav uppercase tracking-widest text-text-muted hover:text-accent transition-colors duration-100">
-                [menu]
-            </button>
-        </div>
-    </nav>
+  <!-- ═ NAVBAR ═ -->
+  <nav class="sticky top-0 z-50 bg-nb-bg border-b-4 border-nb-black">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-black tracking-tight text-nb-black flex items-center gap-1">
+        RPH<span class="cursor-blink text-nb-coral">_</span>
+      </a>
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-tight">
+        <li><a href="#about" class="link-neo text-nb-text transition-colors">About</a></li>
+        <li><a href="#skills" class="link-neo text-nb-text transition-colors">Skills</a></li>
+        <li><a href="#projects" class="link-neo text-nb-text transition-colors">Projects</a></li>
+        <li><a href="#experience" class="link-neo text-nb-text transition-colors">Experience</a></li>
+        <li><a href="#contact"
+            class="bg-nb-yellow border-3 border-nb-black px-5 py-2 shadow-nb hover:shadow-nb-hover transition-all btn-neo text-nb-text font-bold text-sm uppercase">Contact</a>
+        </li>
+      </ul>
+      <!-- Hamburger -->
+      <button id="menuToggle"
+        class="md:hidden border-3 border-nb-black px-3 py-1.5 text-sm font-bold uppercase shadow-nb-sm bg-nb-bg hover:shadow-nb transition-all btn-neo"
+        aria-label="Toggle menu">
+        Menu
+      </button>
+    </div>
+  </nav>
 
-    <!-- ── Mobile Menu Overlay ────────────────────── -->
-    <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-bg flex-col justify-center px-gutter-mobile" 
-        onclick="closeMenu()">
-        <button id="menuClose"
-            class="absolute top-4 right-6 text-nav uppercase tracking-widest text-text-muted hover:text-accent transition-colors duration-100">[close]</button>
-        <ul class="flex flex-col gap-8" onclick="event.stopPropagation()">
-            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
-                    href="#about" onclick="closeMenu()"># about</a></li>
-            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
-                    href="#experience" onclick="closeMenu()"># experience</a></li>
-            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
-                    href="#projects" onclick="closeMenu()"># projects</a></li>
-            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
-                    href="#stack" onclick="closeMenu()"># stack</a></li>
-            <li><a class="text-[28px] font-bold text-primary hover:text-accent transition-colors duration-100"
-                    href="#contact" onclick="closeMenu()"># contact</a></li>
+  <!--  Mobile Menu Overlay ─ -->
+  <div id="mobileMenu"
+    class="hidden fixed inset-0 z-[60] bg-nb-yellow flex-col items-center justify-center border-b-4 border-nb-black">
+    <button id="menuClose"
+      class="absolute top-5 right-6 border-3 border-nb-black px-4 py-2 text-sm font-bold uppercase bg-nb-bg shadow-nb-sm hover:shadow-nb transition-all btn-neo"
+      aria-label="Close menu">
+      ✕ Close
+    </button>
+    <ul class="flex flex-col items-center gap-8 text-center">
+      <li><a href="#about" onclick="closeMenu()"
+          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">About</a>
+      </li>
+      <li><a href="#skills" onclick="closeMenu()"
+          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Skills</a>
+      </li>
+      <li><a href="#projects" onclick="closeMenu()"
+          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Projects</a>
+      </li>
+      <li><a href="#experience" onclick="closeMenu()"
+          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Experience</a>
+      </li>
+      <li><a href="#contact" onclick="closeMenu()"
+          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Contact</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!--  MARQUEE 1  -->
+  <div class="w-full border-b-4 border-nb-black bg-nb-black overflow-hidden py-3">
+    <div id="marquee" class="splide" aria-label="Announcement marquee">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide marquee-slide">✦ Frontend Developer ✦ </li>
+          <li class="splide__slide marquee-slide">✦ UI Enthusiast ✦</li>
+          <li class="splide__slide marquee-slide">✦ Code Artisan ✦</li>
         </ul>
+      </div>
     </div>
+  </div>
 
-    <!-- ── Main ───────────────────────────────────── -->
-    <main class="max-w-[680px] mx-auto px-gutter-mobile md:px-gutter-desktop pb-section-gap-desktop">
-
-        <!-- Hero -->
-        <section class="pt-12 md:pt-24 mb-section-gap-mobile md:mb-section-gap-desktop">
-            <h1 class="text-hero text-primary mb-6">Reynaldi<br />Putra Hasli</h1>
-            <div class="w-full h-px bg-border mb-6"></div>
-            <p class="text-tagline text-text-secondary mb-8 max-w-lg">
-                Membangun pengalaman web yang bersih, cepat, dan efisien.<br />
-                Fokus pada desain minimalis dan arsitektur kode yang solid<br />
-                untuk menciptakan produk digital yang berdampak.
-            </p>
-            <div class="flex flex-wrap gap-6 text-meta">
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="mailto:reynaldiputrahasli@gmail.com">→ email</a>
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener">→ linkedin</a>
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="https://github.com/RPH07" target="_blank" rel="noopener">→ github</a>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="about">
-            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
-                <span class="text-accent">//</span> about
-            </h2>
-            <div class="text-body text-text-secondary space-y-4 max-w-[580px]">
-                <p>
-                    Saya adalah seorang pengembang web dengan spesialisasi dalam front-end dan back-end modern.
-                    Pendekatan saya terhadap desain dan pengembangan selalu mengutamakan fungsi, kejelasan, dan
-                    performa.
-                </p>
-                <p>
-                    Saya percaya bahwa antarmuka terbaik adalah yang tidak mengganggu pengguna, melainkan
-                    memfasilitasi tujuan mereka dengan mulus. Saat ini sedang memperdalam keahlian di bidang
-                    Frontend Development melalui program magang nasional.
-                </p>
-                <div class="flex items-center gap-4 mb-16">
-                    <a href="https://drive.google.com/uc?export=download&id=1VIcLA1f8S0OZAnvTUHPsX3wqEI3Ev-XB" download
-                        class="inline-flex items-center gap-2 bg-surface text-on-primary font-label-mono text-[10px] md:text-label-mono uppercase tracking-[2px] px-3 py-2 md:px-4 md:py-2 border border-primary transition-all duration-300 hover:bg-bg hover:text-primary whitespace-nowrap">
-                        <span class="material-symbols-outlined text-[14px] md:text-[16px]">download</span>
-                        Download CV
-                    </a>
-                    <span class="font-label-mono text-label-mono text-muted uppercase tracking-[1px] text-[10px]">
-                        PDF · Updated 2026
-                    </span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="experience">
-            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
-                <span class="text-accent">//</span> experience
-            </h2>
-            <div class="space-y-10">
-
-                <div class="flex flex-col md:flex-row gap-2 md:gap-8">
-                    <div class="text-meta text-text-muted shrink-0 md:w-36 pt-1">[Nov 2025 – skrg]</div>
-                    <div>
-                        <h3 class="text-heading text-primary mb-1">Web Developer Intern</h3>
-                        <p class="text-meta text-accent mb-3">PT Rajawali Cemerlang Abadi</p>
-                        <p class="text-body text-text-secondary pl-4 border-l border-border">
-                            Membangun custom WordPress theme dari nol untuk meningkatkan fleksibilitas branding
-                            perusahaan, serta mengoptimalkan performa dan responsivitas website di berbagai perangkat.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-2 md:gap-8">
-                    <div class="text-meta text-text-muted shrink-0 md:w-36 pt-1">[Agu – Nov 2024]</div>
-                    <div>
-                        <h3 class="text-heading text-primary mb-1">Frontend Developer Intern</h3>
-                        <p class="text-meta text-accent mb-3">PT Stucel Media Kreatif</p>
-                        <p class="text-body text-text-secondary pl-4 border-l border-border">
-                            Melakukan slicing desain Figma menjadi halaman web yang pixel-perfect dan berkolaborasi
-                            dalam tim menggunakan Git untuk manajemen workflow pengembangan yang rapi.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="projects">
-            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
-                <span class="text-accent">//</span> projects
-            </h2>
-            <div class="border-t border-border">
-
-                <div class="py-6 border-b border-border group">
-                    <div class="flex gap-4 items-baseline mb-2">
-                        <span class="text-meta text-text-muted shrink-0">01.</span>
-                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
-                            E-Cash Book</h3>
-                    </div>
-                    <p class="text-body text-text-secondary mb-2 pl-8">
-                        Aplikasi pelacak keuangan mobile untuk manajemen multi-saldo (Tabungan &amp; Giro)
-                        dengan fitur pencatatan transaksi real-time dan integrasi laporan berbasis cloud.
-                    </p>
-                    <p class="text-meta text-text-muted pl-8">React Native (Expo), API</p>
-                    <button
-                        onclick="openLightbox('ecashbook')"
-                        class="text-meta text-accent hover:underline">[Preview]</button>
-                </div>
-
-                <div class="py-6 border-b border-border group">
-                    <div class="flex gap-4 items-baseline mb-2">
-                        <span class="text-meta text-text-muted shrink-0">02.</span>
-                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
-                            MasjidHub</h3>
-                    </div>
-                    <p class="text-body text-text-secondary mb-2 pl-8">
-                        Aplikasi web manajemen masjid dengan fitur notifikasi real-time untuk penerimaan
-                        dan penolakan donasi menggunakan Socket.IO.
-                    </p>
-                    <p class="text-meta text-text-muted pl-8">React.js, Node.js, Express, MySQL</p>
-                </div>
-
-                <div class="py-6 border-b border-border group">
-                    <div class="flex gap-4 items-baseline mb-2">
-                        <span class="text-meta text-text-muted shrink-0">03.</span>
-                        <h3 class="text-heading text-primary group-hover:text-accent transition-colors duration-100">
-                            Custom WordPress Theme</h3>
-                    </div>
-                    <p class="text-body text-text-secondary mb-2 pl-8">
-                        Pengembangan tema WordPress kustom dari nol untuk menggantikan template bawaan,
-                        berfokus pada performa yang ringan dan antarmuka dinamis.
-                    </p>
-                    <p class="text-meta text-text-muted pl-8">PHP, JavaScript, CSS</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Stack -->
-        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="stack">
-            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
-                <span class="text-accent">//</span> stack &amp; tools
-            </h2>
-            <p class="text-meta text-text-secondary leading-loose">
-                html, css, javascript, typescript, php, python,<br />
-                react.js, vue.js, react native, bootstrap,<br />
-                git, figma, wordpress, mysql
-            </p>
-        </section>
-
-        <!-- Contact -->
-        <section class="border-t border-border pt-10 mb-section-gap-mobile md:mb-section-gap-desktop" id="contact">
-            <h2 class="text-label text-text-muted uppercase mb-vertical-rhythm">
-                <span class="text-accent">//</span> contact
-            </h2>
-            <div class="bg-surface p-8 border border-border">
-                <p class="text-body text-text-secondary mb-6">
-                    Tertarik untuk berdiskusi lebih lanjut, kolaborasi project,
-                    atau sekadar menyapa? Jangan ragu untuk menghubungi saya.
-                </p>
-                <div class="flex gap-4 mb-6">
-                        <a class="group inline-flex items-center gap-2 bg-primary text-bg text-cta py-3 px-6 hover:bg-accent transition-colors duration-150"
-                        href="mailto:hi@buildwithrey.my.id?subject=Hello%20Reynaldi%2C%20let's%20connect!">
-                        [ kirim pesan ]
-                            <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ── Footer ─────────────────────────────────── -->
-    <footer class="border-t border-border py-10">
-        <div
-            class="flex flex-col md:flex-row justify-between items-center max-w-[680px] mx-auto px-gutter-mobile md:px-gutter-desktop gap-4">
-            <div class="text-label text-text-muted">
-                © <script>document.write(new Date().getFullYear())</script> reynaldi putra hasli<span class="cursor-blink text-accent">_</span>
-            </div>
-            <div class="flex gap-6 text-meta">
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="https://github.com/RPH07" target="_blank" rel="noopener">github</a>
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener">linkedin</a>
-                <a class="text-text-muted hover:text-accent transition-colors duration-100"
-                    href="mailto:hi@buildwithrey.my.id">email</a>
-            </div>
+  <!--  MAIN  -->
+  <main>
+    <!--  HERO  -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-28 pb-20 md:pb-32 section-animate" id="hero">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div class="max-w-3xl">
+          <!-- Eyebrow label -->
+          <div class="inline-flex items-center gap-3 mb-6">
+            <span class="section-number">01</span>
+            <span class="text-sm font-bold uppercase tracking-wider">Hello, I'm</span>
+          </div>
+          <!-- Giant headline -->
+          <h1 class="text-hero font-black text-nb-black leading-[0.85] tracking-tighter">
+            Reynaldi<br />
+            <span class="bg-nb-yellow px-2 inline-block rotate-neo-reverse">Putra Hasli</span>
+          </h1>
+          <!-- Subtitle -->
+          <p class="text-hero-sub font-bold text-nb-text mt-4 max-w-xl">
+            Frontend Developer who builds fast, functional, and memorable web experiences.
+          </p>
         </div>
-    </footer>
-
-    <script src="conf/script.js"></script>
-
-    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-primary/80
-        backdrop-blur-sm items-center flex flex-col justify-center p-8"
-        onclick="closeLightbox()">
-        <img src="" alt="" id="lightbox-img" class="max-w-full max-h-full object-contain border border-border" />
-        <div id="lightbox-nav" class="flex items-center gap-6 mt-4" onclick="event.stopPropagation()">
-            <button onclick="prevImage()" class="text-bg text-meta">Previous</button>
-            <span id="lightbox-counter" class="text-bg text-meta"></span>
-            <button onclick="nextImage()" class="text-bg text-meta">Next</button>
+        <!-- CTA buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 shrink-0">
+          <a href="#contact"
+            class="btn-neo bg-nb-black text-nb-bg border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover flex items-center gap-2">
+            Hire Me
+            <span class="text-lg">→</span>
+          </a>
+          <a href="https://drive.google.com/uc?export=download&id=16uAhmtYynhZpy0U7iBj70VOVIFZA5kwD" download
+            class="btn-neo bg-nb-bg text-nb-black border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover flex items-center gap-2">
+            Download CV
+            <span class="text-lg">↓</span>
+          </a>
         </div>
+      </div>
+      <!-- Social badges row -->
+      <div class="flex flex-wrap gap-3 mt-12">
+        <a href="https://github.com/RPH07" target="_blank" rel="noopener" class="badge-neo">
+          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.5 11.5 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener" class="badge-neo">
+          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:hi@buildwithrey.my.id" class="flex items-center gap-2 badge-neo">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          Email</a>
+      </div>
+    </section>
+
+      <!--  MARQUEE 2  -->
+  <div class="w-[-110%] -ml-[5%] -rotate-2 border-y-4 border-nb-black bg-nb-black overflow-hidden py-3 mt-4 md:my-4 shadow-nb-lg">
+    <div id="marquee-tilted" class="splide" aria-label="Announcement marquee">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide marquee-slide">✦ Frontend Developer ✦ </li>
+          <li class="splide__slide marquee-slide">✦ UI Enthusiast ✦</li>
+          <li class="splide__slide marquee-slide">✦ Code Artisan ✦</li>
+        </ul>
+      </div>
     </div>
+  </div>
 
+    <!--  ABOUT  -->
+    <section class="border-t-4 border-nb-black bg-nb-warm py-16 md:py-24 section-animate" id="about">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="section-number">02</span>
+          <h2 class="text-huge font-black text-nb-black tracking-tight">About</h2>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-8 md:gap-12">
+          <!-- Bio copy (3 cols) -->
+          <div class="md:col-span-3 space-y-6 text-body leading-relaxed text-nb-text">
+            <p>
+              I'm a Software Engineer who specializes in building modern, efficient, and scalable web solutions.
+              With expertise in both <strong class="bg-nb-yellow px-1">Front-end</strong> and
+              <strong class="bg-nb-yellow px-1">Back-end</strong> development, I'm dedicated to crafting
+              intuitive user interfaces backed by performant system architecture.
+            </p>
+            <p>
+              My philosophy? Put functionality and user experience first — without sacrificing clean aesthetics.
+              I'm currently sharpening my skills across the latest web ecosystem through real-world professional
+              experience.
+            </p>
+            <!-- Quick stat boxes -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4">
+              <div class="bg-nb-bg border-3 border-nb-black px-4 py-3 shadow-nb-sm">
+                <span class="text-2xl font-black">1</span>
+                <span class="block text-xs font-bold uppercase mt-1">Years Coding</span>
+              </div>
+              <div class="bg-nb-bg border-3 border-nb-black px-4 py-3 shadow-nb-sm">
+                <span class="text-2xl font-black">5+</span>
+                <span class="block text-xs font-bold uppercase mt-1">Projects Built</span>
+              </div>
+              <div class="bg-nb-bg border-3 border-nb-black px-4 py-3 shadow-nb-sm col-span-2 sm:col-span-1">
+                <span class="text-2xl font-black">∞</span>
+                <span class="block text-xs font-bold uppercase mt-1">Cups of Coffee</span>
+              </div>
+            </div>
+          </div>
+          <!-- Personality panel (2 cols) -->
+          <div class="md:col-span-2 bg-nb-bg border-4 border-nb-black p-6 md:p-8 shadow-nb-lg self-start rotate-neo">
+            <p class="flex items-center gap-2 font-bold text-sm uppercase tracking-wider mb-3">
+              <i data-lucide="zap" class="w-4 h-4"></i> 
+              Quick Facts</p>
+            <ul class="space-y-3 text-sm font-medium">
+              <li class="flex items-start gap-2">
+                <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
+                <span>Figma to pixel-perfect HTML/CSS</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
+                <span>React &amp; Vue.js component architect</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
+                <span>WordPress custom theme development</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
+                <span>Git workflow &amp; team collaboration</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
+                <span>Always learning, always shipping</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--  SKILLS  -->
+    <section class="border-t-4 border-nb-black py-16 md:py-24 section-animate" id="skills">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="section-number">03</span>
+          <h2 class="text-huge font-black text-nb-black tracking-tight">Skills &amp; Tools</h2>
+        </div>
+
+        <!-- Skill categories -->
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- Frontend -->
+          <div class="border-4 border-nb-black bg-nb-bg p-6 card-neo shadow-nb">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl"><i data-lucide="layout-panel-left" class="w-5 h-5"></i></span>
+              <h3 class="text-lg font-black uppercase tracking-tight">Frontend</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-neo">HTML5</span>
+              <span class="badge-neo">CSS3</span>
+              <span class="badge-neo">JavaScript</span>
+              <span class="badge-neo">TypeScript</span>
+              <span class="badge-neo">React.js</span>
+              <span class="badge-neo">Vue.js</span>
+              <span class="badge-neo">Tailwind CSS</span>
+              <span class="badge-neo">Bootstrap</span>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="border-4 border-nb-black bg-nb-bg p-6 card-neo shadow-nb">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl"><i data-lucide="server" class="w-5 h-5"></i></span>
+              <h3 class="text-lg font-black uppercase tracking-tight">Backend</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-neo">Node.js</span>
+              <span class="badge-neo">Express</span>
+              <span class="badge-neo">PHP</span>
+              <span class="badge-neo">Python</span>
+              <span class="badge-neo">MySQL</span>
+              <span class="badge-neo">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- Tools & Design -->
+          <div class="border-4 border-nb-black bg-nb-bg p-6 card-neo shadow-nb">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl"><i data-lucide="wrench" class="w-5 h-5"></i></span>
+              <h3 class="text-lg font-black uppercase tracking-tight">Tools &amp; Design</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-neo">Git</span>
+              <span class="badge-neo">Figma</span>
+              <span class="badge-neo">WordPress</span>
+              <span class="badge-neo">React Native</span>
+              <span class="badge-neo">VS Code</span>
+              <span class="badge-neo">Webpack</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--  PROJECTS  -->
+    <section class="border-t-4 border-nb-black bg-nb-warm py-16 md:py-24 section-animate" id="projects">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="section-number">04</span>
+          <h2 class="text-huge font-black text-nb-black tracking-tight">Featured Projects</h2>
+        </div>
+
+        <!-- Project grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!--  Project 1: E-Cash Book  -->
+          <div class="border-4 border-nb-black bg-nb-bg card-neo shadow-nb flex flex-col">
+            <!-- Thumbnail placeholder -->
+            <div
+              class="h-44 bg-nb-cyan border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
+                  alt="E-Cash Book preview" 
+                  class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="bg-nb-black text-nb-bg text-xs font-bold px-2 py-0.5">01</span>
+                <h3 class="text-card-title font-black tracking-tight">E-Cash Book</h3>
+              </div>
+              <p class="text-sm text-nb-text/80 mb-3 flex-1">
+                Mobile finance tracker with multi-balance management (Savings &amp; Giro),
+                real-time transaction logging, and cloud-based reporting.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">React Native</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Expo</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">API</span>
+              </div>
+              <button onclick="openLightbox('ecashbook')"
+                class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
+                <span><i data-lucide="eye" class="w-4 h-4"></i></span> Preview
+              </button>
+            </div>
+          </div>
+
+          <!--  Project 2: MasjidHub  -->
+          <div class="border-4 border-nb-black bg-nb-bg card-neo shadow-nb flex flex-col">
+            <div
+              class="h-44 bg-nb-coral border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
+                  alt="MasjidHub preview" 
+                  class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="bg-nb-black text-nb-bg text-xs font-bold px-2 py-0.5">02</span>
+                <h3 class="text-card-title font-black tracking-tight">MasjidHub</h3>
+              </div>
+              <p class="text-sm text-nb-text/80 mb-3 flex-1">
+                Mosque management web app with real-time donation notifications
+                (accept/reject) powered by Socket.IO for instant updates.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">React.js</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Node.js</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Express</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">MySQL</span>
+              </div>
+              <button onclick="openLightbox('masjidhub')"
+                class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
+                <span><i data-lucide="eye" class="w-4 h-4"></i></span> Preview
+              </button>
+            </div>
+          </div>
+
+          <!--  Project 3: WordPress Theme  -->
+          <div class="border-4 border-nb-black bg-nb-bg card-neo shadow-nb flex flex-col">
+            <div
+              class="h-44 bg-nb-lime border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
+                  alt="WordPress Theme preview" 
+                  class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="bg-nb-black text-nb-bg text-xs font-bold px-2 py-0.5">03</span>
+                <h3 class="text-card-title font-black tracking-tight">Custom WP Theme</h3>
+              </div>
+              <p class="text-sm text-nb-text/80 mb-3 flex-1">
+                Custom WordPress theme built from scratch — replacing stock templates
+                with a lightweight, high-performance, and dynamic interface.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">PHP</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">JavaScript</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">CSS</span>
+              </div>
+              <button onclick="openLightbox('wordpress-theme')"
+                class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
+                <span><i data-lucide="eye" class="w-4 h-4"></i></span> Preview
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /project grid -->
+      </div>
+    </section>
+
+
+    <!--  EXPERIENCE  -->
+    <section class="border-t-4 border-nb-black py-16 md:py-24 section-animate" id="experience">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="section-number">05</span>
+          <h2 class="text-huge font-black text-nb-black tracking-tight">Experience</h2>
+        </div>
+
+        <div class="relative pl-8 border-l-4 border-nb-black space-y-12">
+
+          <!-- Item 1 -->
+          <div class="relative">
+            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-0.5 border-3 border-nb-black"></div>
+            <div class="bg-nb-bg border-4 border-nb-black p-6 shadow-nb card-neo">
+              <div class="flex items-start justify-between gap-4 flex-wrap mb-2">
+                <h3 class="text-card-title font-black tracking-tight">Web Developer Intern</h3>
+                <span class="text-xs font-bold bg-nb-black text-nb-bg px-3 py-1 shrink-0">Nov 2025 - Mei 2026</span>
+              </div>
+              <p class="text-sm font-bold text-nb-coral mb-3">PT Rajawali Cemerlang Abadi</p>
+              <p class="text-sm text-nb-text/80">
+                Built custom WordPress themes from scratch to improve the company's branding flexibility,
+                and optimized website performance &amp; responsiveness across all devices.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="relative">
+            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-0.5 border-3 border-nb-black"></div>
+            <div class="bg-nb-bg border-4 border-nb-black p-6 shadow-nb card-neo">
+              <div class="flex items-start justify-between gap-4 flex-wrap mb-2">
+                <h3 class="text-card-title font-black tracking-tight">Frontend Developer Intern</h3>
+                <span class="text-xs font-bold bg-nb-black text-nb-bg px-3 py-1 shrink-0">Aug 2024 - Nov 2024</span>
+              </div>
+              <p class="text-sm font-bold text-nb-coral mb-3">PT Stucel Media Kreatif</p>
+              <p class="text-sm text-nb-text/80">
+                Sliced Figma designs into pixel-perfect web pages and collaborated using Git
+                for clean development workflow management within a cross-functional team.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--  CONTACT  -->
+    <section class="border-t-4 border-nb-black bg-nb-black py-16 md:py-24 section-animate" id="contact">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="section-number bg-nb-yellow text-nb-black !font-black">06</span>
+          <h2 class="text-huge font-black text-nb-yellow tracking-tight">Let's Talk</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <!-- Left: copy -->
+          <div>
+            <p class="text-hero-sub font-black text-nb-bg mb-6">
+              Got a project, an idea, or just want to say hi?
+            </p>
+            <p class="text-body text-nb-bg/80 mb-8 max-w-md">
+              I'm always open to new opportunities, collaborations, and conversations.
+              Drop me a message — I'll get back to you fast.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="mailto:hi@buildwithrey.my.id?subject=Hello%20Reynaldi%2C%20let's%20connect!"
+                class="flex items-center gap-2 btn-neo bg-nb-yellow text-nb-black border-3 border-nb-yellow px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                Send Email
+              </a>
+              <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
+                class="flex items-center gap-2 btn-neo bg-nb-bg text-nb-black border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover">
+                <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <!-- Right: quick contact card -->
+          <div class="bg-nb-yellow border-4 border-nb-bg p-8 shadow-nb-lg rotate-neo-reverse">
+            <p class="font-black text-lg uppercase tracking-tight mb-4 text-nb-black flex items-center gap-2">
+              <i data-lucide="inbox" class="w-4 h-4"></i>
+              Reach me at
+            </p>
+            <ul class="space-y-4 text-sm font-bold">
+              <li>
+                <a href="mailto:hi@buildwithrey.my.id"
+                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  <span class="text-lg">→</span> hi@buildwithrey.my.id
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/RPH07" target="_blank" rel="noopener"
+                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  <span class="text-lg">→</span> github.com/RPH07
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
+                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  <span class="text-lg">→</span> linkedin.com/in/reynaldi-putra-hasli
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!--  FOOTER  -->
+  <footer class="border-t-4 border-nb-black bg-nb-bg py-8">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm font-bold text-nb-text">
+        © <span id="currentYear">2026</span> Reynaldi Putra Hasli &mdash; Built with
+        <span class="text-nb-coral">♥</span> and neobrutalism
+      </p>
+      <div class="flex items-center gap-4 text-xs font-bold uppercase">
+        <a href="https://github.com/RPH07" target="_blank" rel="noopener" class="link-neo text-nb-text">GitHub</a>
+        <span class="text-nb-text/30">|</span>
+        <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
+          class="link-neo text-nb-text">LinkedIn</a>
+        <span class="text-nb-text/30">|</span>
+        <a href="mailto:hi@buildwithrey.my.id" class="link-neo text-nb-text">Email</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  LIGHTBOX  -->
+  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-nb-black/95 items-center justify-center px-4"
+    onclick="closeLightbox()">
+    <div class="relative max-w-4xl w-full" onclick="event.stopPropagation()">
+      <!-- Close button -->
+      <button onclick="closeLightbox()"
+        class="absolute -top-12 right-0 text-sm font-bold uppercase text-nb-bg border-3 border-nb-bg px-4 py-2 hover:bg-nb-bg hover:text-nb-black transition-all z-10">
+        ✕ Close
+      </button>
+      <!-- Image -->
+      <div class="border-4 border-nb-bg bg-nb-bg shadow-nb-xl">
+        <img src="" alt="Project preview" id="lightbox-img" class="w-full h-auto object-contain max-h-[75vh]" />
+      </div>
+      <!-- Navigation -->
+      <div id="lightbox-nav" class="flex items-center justify-center gap-6 mt-5">
+        <button onclick="prevImage()"
+          class="btn-neo border-3 border-nb-bg bg-nb-bg text-nb-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
+          ← Prev
+        </button>
+        <span id="lightbox-counter" class="text-nb-bg font-bold text-sm font-mono"></span>
+        <button onclick="nextImage()"
+          class="btn-neo border-3 border-nb-bg bg-nb-bg text-nb-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
+          Next →
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Scripts  -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+  <script src="conf/script.js"></script>
 </body>
 
 </html>

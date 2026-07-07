@@ -1,83 +1,175 @@
-    const toggle = document.getElementById("menuToggle");
-    const closeBtn = document.getElementById("menuClose");
-    const menu = document.getElementById("mobileMenu");
+document.addEventListener('DOMContentLoaded', function () {
 
-    function openMenu() {
-        menu.classList.remove("hidden");
-        menu.classList.add("flex");
-        document.body.style.overflow = "hidden";
+  // ── Marquee
+  var marqueeEl = document.getElementById('marquee');
+    new Splide(marqueeEl, {
+      type: 'loop',
+      drag: false,
+      arrows: false,
+      pagination: false,
+      autoWidth: true,
+      gap: '3rem',
+      clones: 6,
+      autoScroll: {
+        speed: 1,
+        pauseOnHover: true,
+        pauseOnFocus: false,
+      },
+    }).mount(window.splide.Extensions);
+
+  var marqueeTilted = document.getElementById('marquee-tilted');
+    new Splide(marqueeTilted, {
+      type: 'loop',
+      drag: false,
+      arrows: false,
+      pagination: false,
+      autoWidth: true,
+      gap: '3rem',
+      clones: 6,
+      autoScroll: {
+        speed: -1,
+        pauseOnHover: true,
+        pauseOnFocus: false,
+      },
+    }).mount(window.splide.Extensions);
+
+  // ── Mobile Menu
+  const toggle = document.getElementById('menuToggle');
+  const closeBtn = document.getElementById('menuClose');
+  const menu = document.getElementById('mobileMenu');
+
+  window.openMenu = function () {
+    menu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeMenu = function () {
+    menu.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  if (toggle) toggle.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeMenu();
+      closeLightbox();
     }
-    function closeMenu() {
-        menu.classList.add("hidden");
-        menu.classList.remove("flex");
-        document.body.style.overflow = "";
+  });
+
+  // ── Active Nav Highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+  const navObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          var href = a.getAttribute('href');
+          var isActive = href === '#' + entry.target.id;
+          if (isActive) {
+            a.classList.add('text-nb-yellow', 'font-bold');
+            a.classList.remove('text-nb-text');
+          } else {
+            a.classList.remove('text-nb-yellow', 'font-bold');
+            a.classList.add('text-nb-text');
+          }
+        });
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  sections.forEach(function (s) { navObserver.observe(s); });
+
+  // ── Scroll-triggered section animations
+  const animatedSections = document.querySelectorAll('.section-animate');
+
+  const scrollObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+
+  animatedSections.forEach(function (s) { scrollObserver.observe(s); });
+
+  // ── Lightbox
+  var projects = {
+    'ecashbook': [
+      'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
+      'https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ',
+      'https://fastly.picsum.photos/id/4/5000/3333.jpg?hmac=ghf06FdmgiD0-G4c9DdNM8RnBIN7BO0-ZGEw47khHP4',
+    ],
+    'masjidhub': [
+      'https://fastly.picsum.photos/id/10/5000/3333.jpg?hmac=43eoIe3W2TvvE1tS2n8RmEkd8mNEf-OmdGah8WMOJ5Y',
+      'https://fastly.picsum.photos/id/12/5000/3333.jpg?hmac=30L1T6ND3w5zfdwSGOvH2NtdQQ5ODgEsEHII1ElVYJ8',
+    ],
+    'wordpress-theme': [
+      'https://fastly.picsum.photos/id/20/5000/3333.jpg?hmac=YQ1YqCj07SSr7wBLIL6KOB14iI8zNH2NA6avmFOmYHg',
+      'https://fastly.picsum.photos/id/26/5000/3333.jpg?hmac=SvLQEbt8Wg4stf6YtNDqOmhH89dyXqOB5_zcaZZFsgY',
+    ],
+  };
+
+  var currentImages = [];
+  var currentIndex = 0;
+
+  window.openLightbox = function (projectKey) {
+    currentImages = projects[projectKey] || [];
+    currentIndex = 0;
+    showLightboxImage();
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function showLightboxImage() {
+    document.getElementById('lightbox-img').src = currentImages[currentIndex];
+    document.getElementById('lightbox-counter').textContent =
+      '0' + (currentIndex + 1) + ' / 0' + currentImages.length;
+    var nav = document.getElementById('lightbox-nav');
+    if (currentImages.length <= 1) {
+      nav.classList.add('hidden');
+    } else {
+      nav.classList.remove('hidden');
     }
+  }
 
-    toggle.addEventListener("click", openMenu);
-    closeBtn.addEventListener("click", closeMenu);
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
-    });
+  window.prevImage = function () {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showLightboxImage();
+  };
 
-    // Active nav highlight via IntersectionObserver
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  window.nextImage = function () {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showLightboxImage();
+  };
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                navLinks.forEach((a) => {
-                    const active = a.getAttribute("href") === "#" + entry.target.id;
-                    a.classList.toggle("text-accent", active);
-                    a.classList.toggle("text-text-muted", !active);
-                });
-            });
-        },
-        { threshold: 0.4 },
-    );
+  window.closeLightbox = function () {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.body.style.overflow = '';
+  };
 
-    sections.forEach((s) => observer.observe(s));
-
-    // lightbox
-    const projects = {
-        'ecashbook' : [
-            'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
-            'https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ',
-            'https://fastly.picsum.photos/id/4/5000/3333.jpg?hmac=ghf06FdmgiD0-G4c9DdNM8RnBIN7BO0-ZGEw47khHP4'
-        ]
+  document.addEventListener('keydown', function (e) {
+    var lb = document.getElementById('lightbox');
+    if (lb && !lb.classList.contains('hidden')) {
+      if (e.key === 'ArrowRight') window.nextImage();
+      if (e.key === 'ArrowLeft') window.prevImage();
     }
+  });
 
-    let currentImages = [];
-    let currentIndex = 0;
+  // ── Current year in footer
+  var yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    function openLightbox(projectKey) {
-        currentImages = projects[projectKey] || [];
-        currentIndex = 0;
-        showImage();
-        document.getElementById("lightbox").classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    }
 
-    function showImage() {
-        document.getElementById("lightbox-img").src = currentImages[currentIndex];
-        document.getElementById("lightbox-counter").textContent = 
-        `[${currentIndex + 1} / ${currentImages.length}]`
-        const nav = document.getElementById('lightbox-nav');
-        nav.classList.toggle('hidden', currentImages.length <= 1);
-    }
+  // lucid icon
+  lucide.createIcons();
 
-    function prevImage() {currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;  showImage(); }
-    function nextImage() {currentIndex = (currentIndex + 1) % currentImages.length; showImage(); }
-
-    function closeLightbox() {
-        document.getElementById("lightbox").classList.add("hidden");
-        document.body.style.overflow = "";
-    }
-
-    document.addEventListener("keydown", e => {
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-    });
-    
+});

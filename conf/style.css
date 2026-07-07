@@ -1,19 +1,231 @@
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
+/*  Base  */
+:root {
+  --nb-bg: #ffffff;
+  --nb-text: #1a1a1a;
+  --nb-black: #000000;
+  --nb-yellow: #ffe500;
+  --nb-coral: #ff5a5f;
+  --nb-cyan: #00c2ff;
+  --nb-warm: #f5f0e8;
+  --nb-surface: #f0ede6;
+  --nb-lime: #a3e635;
 }
-
-.cursor-blink {
-    animation: blink 1s step-end infinite;
-}
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*  Selection  */
+::selection {
+  background: var(--nb-black);
+  color: var(--nb-yellow);
+}
+
+/*  Cursor blink  */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.cursor-blink {
+  animation: blink 0.9s step-end infinite;
+}
+
+/*  Card hover lift  */
+.card-neo {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.card-neo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px 0px var(--nb-black);
+}
+.card-neo:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px 0px var(--nb-black);
+}
+
+/*  Button press effect  */
+.btn-neo {
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+.btn-neo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px 0px var(--nb-black) !important;
+}
+.btn-neo:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px 0px var(--nb-black) !important;
+}
+
+/*  Hover underline for links  */
+.link-neo {
+  position: relative;
+  text-decoration: none;
+}
+.link-neo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--nb-black);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+.link-neo:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/*  Skill badge  */
+.badge-neo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 3px solid var(--nb-black);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #ffffff;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.badge-neo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px 0px var(--nb-black);
+}
+.badge-neo:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px 0px var(--nb-black);
+}
+
+/*  Rotated decorative element  */
+.rotate-neo {
+  transform: rotate(-2deg);
+}
+.rotate-neo-reverse {
+  transform: rotate(2deg);
+}
+
+/*  Mobile menu overlay  */
+#mobileMenu {
+  transition: opacity 0.2s ease;
+}
+#mobileMenu.hidden {
+  display: none !important;
+}
+#mobileMenu:not(.hidden) {
+  display: flex !important;
+  opacity: 1;
+}
+
+/*  Section entrance animation  */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section-animate {
+  opacity: 0;
+}
+.section-animate.visible {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+/*  Marquee  */
+#marquee-top.splide,
+#marquee-tilted.splide {
+  padding: 0;
+}
+#marquee-top .splide__track,
+#marquee-top .splide__list,
+#marquee-tilted .splide__track,
+#marquee-tilted .splide__list {
+  display: flex;
+  align-items: center;
+}
+#marquee-top .splide__slide,
+#marquee-tilted .splide__slide {
+  width: auto !important;
+  flex-shrink: 0;
+}
+.marquee-slide {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nb-yellow);
+}
+
+/*  Lightbox  */
+#lightbox {
+  transition: opacity 0.2s ease;
+}
+#lightbox.hidden {
+  display: none !important;
+}
+#lightbox:not(.hidden) {
+  display: flex !important;
+}
+
+/*  Section number decoration  */
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--nb-black);
+  color: var(--nb-bg);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/*  Timeline dot  */
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--nb-black);
+  border: 0;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/*  Responsive helpers  */
+@media (max-width: 640px) {
+  .badge-neo {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-width: 2px;
+  }
+}
+
+/*  Focus styles for keyboard navigation  */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--nb-yellow);
+  outline-offset: 2px;
 }
