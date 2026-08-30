@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', function () {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current == 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+
+    themeToggle.innerHTML = next === 'dark' 
+      ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+      : '<i data-lucide="moon" class="w-4 h-4"></i>';
+    lucide.createIcons();
+  });
+
   // ── Marquee
   var marqueeEl = document.getElementById('marquee');
     new Splide(marqueeEl, {
@@ -9,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
       pagination: false,
       autoWidth: true,
       gap: '3rem',
-      clones: 6,
+      clones: 20,
       autoScroll: {
         speed: 1,
         pauseOnHover: true,
@@ -25,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
       pagination: false,
       autoWidth: true,
       gap: '3rem',
-      clones: 6,
+      clones: 20,
       autoScroll: {
-        speed: -1,
+        speed: 1,
         pauseOnHover: true,
         pauseOnFocus: false,
       },
@@ -58,6 +72,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if(scrollTopBtn){
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth'});
+    });
+  }
+
   // ── Active Nav Highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
@@ -68,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!entry.isIntersecting) return;
         navLinks.forEach(function (a) {
           var href = a.getAttribute('href');
+          if (href === '#contact') return ;
           var isActive = href === '#' + entry.target.id;
           if (isActive) {
             a.classList.add('text-nb-yellow', 'font-bold');
