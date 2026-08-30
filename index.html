@@ -7,8 +7,8 @@
   <title>Reynaldi Putra Hasli — Frontend Developer</title>
   <link rel="icon" href="asset/favicon.ico" />
   <meta name="theme-color" content="#FFFFFF" />
-
-  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <meta name="description"
+    content="Reynaldi Putra Hasli is a Frontend Developer who builds fast, functional, and memorable web experiences." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link
@@ -18,15 +18,17 @@
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="conf/tailwind.config.js"></script>
+  <!-- script theme -->
+  <script src="conf/theme.init.js"></script>
   <link rel="stylesheet" href="conf/style.css" />
 
-  <!-- Splide.js core CSS (CDN) -->
+  <!-- Splide.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css" />
 </head>
 
 <body class="bg-nb-bg text-nb-text font-display selection:bg-nb-black selection:text-nb-yellow overflow-x-hidden">
 
-  <!-- ═ NAVBAR ═ -->
+  <!-- NAVBAR -->
   <nav class="sticky top-0 z-50 bg-nb-bg border-b-4 border-nb-black">
     <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
       <!-- Logo -->
@@ -40,15 +42,29 @@
         <li><a href="#projects" class="link-neo text-nb-text transition-colors">Projects</a></li>
         <li><a href="#experience" class="link-neo text-nb-text transition-colors">Experience</a></li>
         <li><a href="#contact"
-            class="bg-nb-yellow border-3 border-nb-black px-5 py-2 shadow-nb hover:shadow-nb-hover transition-all btn-neo text-nb-text font-bold text-sm uppercase">Contact</a>
+            class="bg-nb-yellow border-3 border-nb-black px-5 py-2 shadow-nb-sm hover:shadow-nb-hover transition-all btn-neo text-nb-ink font-bold text-sm uppercase">Contact</a>
+        </li>
+        <li>
+          <button id="themeToggle"
+            class="btn-neo border-3 border-nb-black px-3 py-1.5 shadow-nb-sm hover:shadow-nb bg-nb-bg"
+            aria-label="Toggle dark mode">
+            <i data-lucide="moon" class="w-4 h-4"></i>
+          </button>
         </li>
       </ul>
       <!-- Hamburger -->
-      <button id="menuToggle"
-        class="md:hidden border-3 border-nb-black px-3 py-1.5 text-sm font-bold uppercase shadow-nb-sm bg-nb-bg hover:shadow-nb transition-all btn-neo"
-        aria-label="Toggle menu">
-        Menu
-      </button>
+      <div class="flex md:hidden gap-3">
+        <button id="themeToggle"
+          class="btn-neo border-3 border-nb-black px-3 py-1.5 shadow-nb-sm hover:shadow-nb bg-nb-bg"
+          aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+        <button id="menuToggle"
+          class="md:hidden border-3 border-nb-black px-3 py-1.5 text-sm font-bold uppercase shadow-nb-sm bg-nb-bg hover:shadow-nb transition-all btn-neo"
+          aria-label="Toggle menu">
+          Menu
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -62,32 +78,32 @@
     </button>
     <ul class="flex flex-col items-center gap-8 text-center">
       <li><a href="#about" onclick="closeMenu()"
-          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">About</a>
+          class="text-4xl md:text-5xl font-black text-nb-ink border-b-4 border-transparent hover:border-nb-ink transition-all">About</a>
       </li>
       <li><a href="#skills" onclick="closeMenu()"
-          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Skills</a>
+          class="text-4xl md:text-5xl font-black text-nb-ink border-b-4 border-transparent hover:border-nb-ink transition-all">Skills</a>
       </li>
       <li><a href="#projects" onclick="closeMenu()"
-          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Projects</a>
+          class="text-4xl md:text-5xl font-black text-nb-ink border-b-4 border-transparent hover:border-nb-ink transition-all">Projects</a>
       </li>
       <li><a href="#experience" onclick="closeMenu()"
-          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Experience</a>
+          class="text-4xl md:text-5xl font-black text-nb-ink border-b-4 border-transparent hover:border-nb-ink transition-all">Experience</a>
       </li>
       <li><a href="#contact" onclick="closeMenu()"
-          class="text-4xl md:text-5xl font-black text-nb-black border-b-4 border-transparent hover:border-nb-black transition-all">Contact</a>
+          class="text-4xl md:text-5xl font-black text-nb-ink border-b-4 border-transparent hover:border-nb-ink transition-all">Contact</a>
       </li>
     </ul>
   </div>
 
 
   <!--  MARQUEE 1  -->
-  <div class="w-full border-b-4 border-nb-black bg-nb-black overflow-hidden py-3">
+  <div class="w-full border-b-4 border-nb-black bg-nb-void overflow-hidden py-3">
     <div id="marquee" class="splide" aria-label="Announcement marquee">
       <div class="splide__track">
         <ul class="splide__list">
-          <li class="splide__slide marquee-slide">✦ Frontend Developer ✦ </li>
-          <li class="splide__slide marquee-slide">✦ UI Enthusiast ✦</li>
-          <li class="splide__slide marquee-slide">✦ Code Artisan ✦</li>
+          <li class="splide__slide marquee-slide">• Frontend Developer • </li>
+          <li class="splide__slide marquee-slide">• UI Enthusiast •</li>
+          <li class="splide__slide marquee-slide">• Code Artisan •</li>
         </ul>
       </div>
     </div>
@@ -107,7 +123,7 @@
           <!-- Giant headline -->
           <h1 class="text-hero font-black text-nb-black leading-[0.85] tracking-tighter">
             Reynaldi<br />
-            <span class="bg-nb-yellow px-2 inline-block rotate-neo-reverse">Putra Hasli</span>
+            <span class="bg-nb-yellow px-2 inline-block rotate-neo-reverse text-nb-ink">Putra Hasli</span>
           </h1>
           <!-- Subtitle -->
           <p class="text-hero-sub font-bold text-nb-text mt-4 max-w-xl">
@@ -122,7 +138,7 @@
             <span class="text-lg">→</span>
           </a>
           <a href="https://drive.google.com/uc?export=download&id=1DOGmWCe2Wtfr7AaNfvuY5k1F34UC5w_4" download
-            class="btn-neo bg-nb-bg text-nb-black border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover flex items-center gap-2"> 
+            class="btn-neo bg-nb-bg text-nb-black border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover flex items-center gap-2">
             Download CV
             <span class="text-lg">↓</span>
           </a>
@@ -131,11 +147,17 @@
       <!-- Social badges row -->
       <div class="flex flex-wrap gap-3 mt-12">
         <a href="https://github.com/RPH07" target="_blank" rel="noopener" class="badge-neo">
-          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.5 11.5 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
+          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.5 11.5 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
           GitHub
         </a>
         <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener" class="badge-neo">
-          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+          <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
           LinkedIn
         </a>
         <a href="mailto:hi@buildwithrey.my.id" class="flex items-center gap-2 badge-neo">
@@ -144,18 +166,19 @@
       </div>
     </section>
 
-      <!--  MARQUEE 2  -->
-  <div class="w-[-110%] -ml-[5%] -rotate-2 border-y-4 border-nb-black bg-nb-black overflow-hidden py-3 mt-4 md:my-4 shadow-nb-lg">
-    <div id="marquee-tilted" class="splide" aria-label="Announcement marquee">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide marquee-slide">✦ Frontend Developer ✦ </li>
-          <li class="splide__slide marquee-slide">✦ UI Enthusiast ✦</li>
-          <li class="splide__slide marquee-slide">✦ Code Artisan ✦</li>
-        </ul>
+    <!--  MARQUEE 2  -->
+    <div
+      class="w-[-110%] -ml-[5%] -rotate-2 border-y-4 border-nb-black bg-nb-void overflow-hidden py-3 mt-4 md:my-4 shadow-nb-lg">
+      <div id="marquee-tilted" class="splide" aria-label="Announcement marquee">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide marquee-slide">• Frontend Developer • </li>
+            <li class="splide__slide marquee-slide">• UI Enthusiast •</li>
+            <li class="splide__slide marquee-slide">• Code Artisan •</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
     <!--  ABOUT  -->
     <section class="border-t-4 border-nb-black bg-nb-warm py-16 md:py-24 section-animate" id="about">
@@ -170,8 +193,8 @@
           <div class="md:col-span-3 space-y-6 text-body leading-relaxed text-nb-text">
             <p>
               I'm a Software Engineer who specializes in building modern, efficient, and scalable web solutions.
-              With expertise in both <strong class="bg-nb-yellow px-1">Front-end</strong> and
-              <strong class="bg-nb-yellow px-1">Back-end</strong> development, I'm dedicated to crafting
+              With expertise in both <strong class="bg-nb-yellow px-1 text-nb-ink">Front-end</strong> and
+              <strong class="bg-nb-yellow px-1 text-nb-ink">Back-end</strong> development, I'm dedicated to crafting
               intuitive user interfaces backed by performant system architecture.
             </p>
             <p>
@@ -198,8 +221,9 @@
           <!-- Personality panel (2 cols) -->
           <div class="md:col-span-2 bg-nb-bg border-4 border-nb-black p-6 md:p-8 shadow-nb-lg self-start rotate-neo">
             <p class="flex items-center gap-2 font-bold text-sm uppercase tracking-wider mb-3">
-              <i data-lucide="zap" class="w-4 h-4"></i> 
-              Quick Facts</p>
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              Quick Facts
+            </p>
             <ul class="space-y-3 text-sm font-medium">
               <li class="flex items-start gap-2">
                 <span class="text-nb-coral mt-0.5"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>
@@ -310,9 +334,8 @@
             <!-- Thumbnail placeholder -->
             <div
               class="h-44 bg-nb-cyan border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
-              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
-                  alt="E-Cash Book preview" 
-                  class="w-full h-full object-cover" loading="lazy" />
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." alt="E-Cash Book preview"
+                class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-5 flex flex-col flex-1">
               <div class="flex items-center gap-2 mb-2">
@@ -324,9 +347,11 @@
                 real-time transaction logging, and cloud-based reporting.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-4">
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">React Native</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Expo</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">API</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">React
+                  Native</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">Expo</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">API</span>
               </div>
               <button onclick="openLightbox('ecashbook')"
                 class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
@@ -339,9 +364,8 @@
           <div class="border-4 border-nb-black bg-nb-bg card-neo shadow-nb flex flex-col">
             <div
               class="h-44 bg-nb-coral border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
-              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
-                  alt="MasjidHub preview" 
-                  class="w-full h-full object-cover" loading="lazy" />
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." alt="MasjidHub preview"
+                class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-5 flex flex-col flex-1">
               <div class="flex items-center gap-2 mb-2">
@@ -353,10 +377,14 @@
                 (accept/reject) powered by Socket.IO for instant updates.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-4">
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">React.js</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Node.js</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">Express</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">MySQL</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">React.js</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">Node.js</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">Express</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">MySQL</span>
               </div>
               <button onclick="openLightbox('masjidhub')"
                 class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
@@ -369,9 +397,8 @@
           <div class="border-4 border-nb-black bg-nb-bg card-neo shadow-nb flex flex-col">
             <div
               class="h-44 bg-nb-lime border-b-4 border-nb-black flex items-center justify-center text-5xl font-black text-nb-bg">
-              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." 
-                  alt="WordPress Theme preview" 
-                  class="w-full h-full object-cover" loading="lazy" />
+              <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=..." alt="WordPress Theme preview"
+                class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-5 flex flex-col flex-1">
               <div class="flex items-center gap-2 mb-2">
@@ -383,9 +410,10 @@
                 with a lightweight, high-performance, and dynamic interface.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-4">
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">PHP</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">JavaScript</span>
-                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5">CSS</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">PHP</span>
+                <span
+                  class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">JavaScript</span>
+                <span class="text-xs font-bold bg-nb-yellow border-2 border-nb-black px-2 py-0.5 text-nb-ink">CSS</span>
               </div>
               <button onclick="openLightbox('wordpress-theme')"
                 class="btn-neo w-full border-3 border-nb-black bg-nb-bg text-nb-text font-bold text-sm uppercase py-2.5 shadow-nb-sm hover:shadow-nb flex items-center justify-center gap-2">
@@ -411,7 +439,7 @@
 
           <!-- Item 1 -->
           <div class="relative">
-            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-0.5 border-3 border-nb-black"></div>
+            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-7 border-3 border-nb-black"></div>
             <div class="bg-nb-bg border-4 border-nb-black p-6 shadow-nb card-neo">
               <div class="flex items-start justify-between gap-4 flex-wrap mb-2">
                 <h3 class="text-card-title font-black tracking-tight">Web Developer Intern</h3>
@@ -427,7 +455,7 @@
 
           <!-- Item 2 -->
           <div class="relative">
-            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-0.5 border-3 border-nb-black"></div>
+            <div class="timeline-dot absolute -left-[calc(16px+2px+16px)] top-7 border-3 border-nb-black"></div>
             <div class="bg-nb-bg border-4 border-nb-black p-6 shadow-nb card-neo">
               <div class="flex items-start justify-between gap-4 flex-wrap mb-2">
                 <h3 class="text-card-title font-black tracking-tight">Frontend Developer Intern</h3>
@@ -447,58 +475,60 @@
 
 
     <!--  CONTACT  -->
-    <section class="border-t-4 border-nb-black bg-nb-black py-16 md:py-24 section-animate" id="contact">
+    <section class="border-t-4 border-nb-black bg-nb-void py-16 md:py-24 section-animate" id="contact">
       <div class="max-w-6xl mx-auto px-6 md:px-10">
         <div class="flex items-center gap-4 mb-10">
-          <span class="section-number bg-nb-yellow text-nb-black !font-black">06</span>
+          <span class="section-number bg-nb-yellow text-white font-black">06</span>
           <h2 class="text-huge font-black text-nb-yellow tracking-tight">Let's Talk</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-          <!-- Left: copy -->
           <div>
-            <p class="text-hero-sub font-black text-nb-bg mb-6">
+            <p class="text-hero-sub font-black text-white mb-6">
               Got a project, an idea, or just want to say hi?
             </p>
-            <p class="text-body text-nb-bg/80 mb-8 max-w-md">
+            <p class="text-body text-white mb-8 max-w-md">
               I'm always open to new opportunities, collaborations, and conversations.
               Drop me a message — I'll get back to you fast.
             </p>
             <div class="flex flex-wrap gap-3">
               <a href="mailto:hi@buildwithrey.my.id?subject=Hello%20Reynaldi%2C%20let's%20connect!"
-                class="flex items-center gap-2 btn-neo bg-nb-yellow text-nb-black border-3 border-nb-yellow px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover">
+                class="flex items-center gap-2 btn-neo bg-nb-yellow text-nb-ink border-3 border-nb-yellow px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 Send Email
               </a>
               <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
                 class="flex items-center gap-2 btn-neo bg-nb-bg text-nb-black border-3 border-nb-black px-8 py-4 text-sm font-bold uppercase shadow-nb hover:shadow-nb-hover">
-                <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                <svg role="img" viewBox="0 0 24 24" class="w-4 h-4 fill-current">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
                 LinkedIn
               </a>
             </div>
           </div>
           <!-- Right: quick contact card -->
           <div class="bg-nb-yellow border-4 border-nb-bg p-8 shadow-nb-lg rotate-neo-reverse">
-            <p class="font-black text-lg uppercase tracking-tight mb-4 text-nb-black flex items-center gap-2">
+            <p class="font-black text-lg uppercase tracking-tight mb-4 text-nb-ink flex items-center gap-2">
               <i data-lucide="inbox" class="w-4 h-4"></i>
               Reach me at
             </p>
             <ul class="space-y-4 text-sm font-bold">
               <li>
                 <a href="mailto:hi@buildwithrey.my.id"
-                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  class="flex items-center gap-3 text-nb-ink hover:underline underline-offset-4">
                   <span class="text-lg">→</span> hi@buildwithrey.my.id
                 </a>
               </li>
               <li>
                 <a href="https://github.com/RPH07" target="_blank" rel="noopener"
-                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  class="flex items-center gap-3 text-nb-ink hover:underline underline-offset-4">
                   <span class="text-lg">→</span> github.com/RPH07
                 </a>
               </li>
               <li>
                 <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
-                  class="flex items-center gap-3 text-nb-black hover:underline underline-offset-4">
+                  class="flex items-center gap-3 text-nb-ink hover:underline underline-offset-4">
                   <span class="text-lg">→</span> linkedin.com/in/reynaldi-putra-hasli
                 </a>
               </li>
@@ -515,30 +545,31 @@
   <footer class="border-t-4 border-nb-black bg-nb-bg py-8">
     <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-sm font-bold text-nb-text">
-        © <span id="currentYear">2026</span> Reynaldi Putra Hasli &mdash; Built with
-        <span class="text-nb-coral">♥</span> and neobrutalism
+        &copy; <span id="currentYear"> 2020</span> -
+        <script>document.write(new Date().getFullYear())</script> Reynaldi Putra Hasli &mdash; Built with
+        <span class="text-nb-coral animate-heartbeat">♥</span> and neobrutalism
       </p>
       <div class="flex items-center gap-4 text-xs font-bold uppercase">
         <a href="https://github.com/RPH07" target="_blank" rel="noopener" class="link-neo text-nb-text">GitHub</a>
         <span class="text-nb-text/30">|</span>
-        <a href="https://linkedin.com/in/reynaldi-putra-hasli" target="_blank" rel="noopener"
-          class="link-neo text-nb-text">LinkedIn</a>
-        <span class="text-nb-text/30">|</span>
-        <a href="mailto:hi@buildwithrey.my.id" class="link-neo text-nb-text">Email</a>
+        <button id="scrollTopBtn" class="w-10 h-10 aspect-square shrink-0 p-0 appearance-none flex items-center justify-center
+          bg-nb-yellow text-nb-ink border-3 border-nb-black shadow-nb
+          btn-neo text-lg leading-none font-black">
+          ↑
+        </button>
       </div>
     </div>
   </footer>
 
 
   <!--  LIGHTBOX  -->
-  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-nb-black/95 items-center justify-center px-4"
+  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/95 items-center justify-center px-4"
     onclick="closeLightbox()">
+    <button onclick="closeLightbox()"
+      class="fixed top-4 right-4 md:top-6 md:right-6 z-[60] text-sm font-bold uppercase text-white border-3 border-white px-4 py-2 hover:bg-white hover:text-black transition-all">
+      ✕ Close
+    </button>
     <div class="relative max-w-4xl w-full" onclick="event.stopPropagation()">
-      <!-- Close button -->
-      <button onclick="closeLightbox()"
-        class="absolute -top-12 right-0 text-sm font-bold uppercase text-nb-bg border-3 border-nb-bg px-4 py-2 hover:bg-nb-bg hover:text-nb-black transition-all z-10">
-        ✕ Close
-      </button>
       <!-- Image -->
       <div class="border-4 border-nb-bg bg-nb-bg shadow-nb-xl">
         <img src="" alt="Project preview" id="lightbox-img" class="w-full h-auto object-contain max-h-[75vh]" />
@@ -546,12 +577,12 @@
       <!-- Navigation -->
       <div id="lightbox-nav" class="flex items-center justify-center gap-6 mt-5">
         <button onclick="prevImage()"
-          class="btn-neo border-3 border-nb-bg bg-nb-bg text-nb-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
+          class="btn-neo border-3 border-white bg-white text-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
           ← Prev
         </button>
-        <span id="lightbox-counter" class="text-nb-bg font-bold text-sm font-mono"></span>
+        <span id="lightbox-counter" class="text-white font-bold text-sm font-mono"></span>
         <button onclick="nextImage()"
-          class="btn-neo border-3 border-nb-bg bg-nb-bg text-nb-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
+          class="btn-neo border-3 border-white bg-white text-black px-6 py-2 text-sm font-bold uppercase shadow-nb-sm hover:shadow-nb">
           Next →
         </button>
       </div>
@@ -561,9 +592,9 @@
 
   <!--  Scripts  -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
   <script src="conf/script.js"></script>
 </body>
 
