@@ -2,15 +2,17 @@ tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        "nb-bg": "#FFFFFF",
-                        "nb-text": "#1A1A1A",
-                        "nb-black": "#000000",
-                        "nb-yellow": "#FFE500",
-                        "nb-coral": "#FF5A5F",
-                        "nb-cyan": "#00C2FF",
-                        "nb-warm": "#F5F0E8",
-                        "nb-surface": "#F0EDE6",
-                        "nb-lime": "#A3E635"
+                        "nb-bg": "var(--nb-bg)",
+                        "nb-text": "var(--nb-text)",
+                        "nb-black": "var(--nb-black)",
+                        "nb-yellow": "var(--nb-yellow)",
+                        "nb-coral": "var(--nb-coral)",
+                        "nb-cyan": "var(--nb-cyan)",
+                        "nb-warm": "var(--nb-warm)",
+                        "nb-surface": "var(--nb-surface)",
+                        "nb-lime": "var(--nb-lime)",
+                        "nb-ink": "var(--nb-ink)",
+                        "nb-void": "var(--nb-void)",
                     },
                     fontFamily: {
                         display: ['Inter', 'system-ui', 'sans-serif'],
@@ -29,12 +31,12 @@ tailwind.config = {
                         'meta': ['13px', { lineHeight: '1.4' }],
                     },
                     boxShadow: {
-                        'nb': '4px 4px 0px 0px #000000',
-                        'nb-hover': '7px 7px 0px 0px #000000',
-                        'nb-lg': '6px 6px 0px 0px #000000',
-                        'nb-sm': '2px 2px 0px 0px #000000',
-                        'nb-xl': '8px 8px 0px 0px #000000',
-                        'nb-yellow': '4px 4px 0px 0px #FFE500',
+                        'nb': '4px 4px 0px 0px var(--nb-black)',
+                        'nb-hover': '7px 7px 0px 0px var(--nb-black)',
+                        'nb-lg': '6px 6px 0px 0px var(--nb-black)',
+                        'nb-sm': '2px 2px 0px 0px var(--nb-black)',
+                        'nb-xl': '8px 8px 0px 0px var(--nb-black)',
+                        'nb-yellow': '4px 4px 0px 0px var(--nb-yellow)',
                     },
                     borderWidth: {
                         '3': '3px',
