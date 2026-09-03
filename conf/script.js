@@ -1,17 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('click', function () {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current == 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+  const themeToggleMobile = document.getElementById('mobileToggle');
+  const themeButtons = [themeToggle, themeToggleMobile];
 
-    themeToggle.innerHTML = next === 'dark' 
+  function applyThemeIcon(next) {
+    const iconHTHML = next === 'dark' 
       ? '<i data-lucide="sun" class="w-4 h-4"></i>'
       : '<i data-lucide="moon" class="w-4 h-4"></i>';
+    themeButtons.forEach(btn => btn.innerHTML = iconHTHML);
     lucide.createIcons();
+  }
+
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', function (btn) {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      applyThemeIcon(next);
+    });
   });
 
   // ── Marquee
