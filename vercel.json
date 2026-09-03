@@ -1,0 +1,3 @@
+{
+    "ignorCommand": "git diff --quiet HEAD^ HEAD -- backend"
+}
