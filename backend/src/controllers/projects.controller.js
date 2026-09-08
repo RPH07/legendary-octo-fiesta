@@ -91,13 +91,7 @@ async function updateProject(req, res) {
 // delete a project by ID
 async function deleteProject(req, res) {
     try {
-        const { title, description, techStack, imageUrl, previewUrl} = req.body;
-
-        if(!title || !description || !techStack) {
-            return res.status(400).json({ error: 'Title, description, and tech stack are required' });
-        }
-        
-        const deleteProject = await prisma.project.delete({
+        await prisma.project.delete({
             where: {
                 id: Number(req.params.id)
             },
