@@ -22,6 +22,9 @@ services:
       DATABASE_URL: mysql://root:${DB_ROOT_PASSWORD}@mysql:3306/${DB_NAME}
     depends_on:
       - mysql
+    volumes:
+      - ./src:/app/src
+    command: npm run dev
   
 volumes:
   mysql_data:
