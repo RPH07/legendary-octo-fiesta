@@ -24,6 +24,7 @@ services:
       - mysql
     volumes:
       - ./src:/app/src
+      - ./public:/app/public
     command: npm run dev
   
 volumes:
