@@ -10,11 +10,34 @@
 <body>
     <header>
         <h1>Projects</h1>
-        <div>
+        <div class="dashboard-actions">
             <a href="project-form.html" class="btn">+ New Project</a>
             <button id="logoutBtn" class="btn-outline">Logout</button>
         </div>
     </header>
+
+    <section class="cv-manager" aria-labelledby="cvManagerTitle">
+        <div class="cv-manager-heading">
+            <div>
+                <p class="eyebrow">Portfolio file</p>
+                <h2 id="cvManagerTitle">CV Manager</h2>
+                <p class="cv-description">Upload CV terbaru atau aktifkan kembali versi arsip.</p>
+            </div>
+            <form id="cvUploadForm" class="cv-upload-form">
+                <label class="cv-file-input" for="cvFile">
+                    <span>Choose PDF</span>
+                    <input type="file" id="cvFile" accept="application/pdf,.pdf" required>
+                </label>
+                <button id="uploadCvButton" type="submit">Upload CV</button>
+            </form>
+        </div>
+        <p id="cvUploadStatus" class="cv-status" aria-live="polite"></p>
+        <div id="activeCv" class="active-cv"></div>
+        <div class="cv-archive-section">
+            <h3>CV Archive</h3>
+            <div id="cvArchive" class="cv-archive"></div>
+        </div>
+    </section>
 
     <div id="projectList" class="project-list"></div>
 
