@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Form</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div class="form-box">
+    <h1 id="formTitle">New Project</h1>
+    <form id="projectForm">
+      <input type="text" id="title" placeholder="Title" required />
+      <textarea id="description" placeholder="Description" required></textarea>
+      <input type="text" id="techStack" placeholder="Tech Stack (comma separated)" required />
+      <input type="text" id="previewUrl" placeholder="Preview URL (optional)" />
+
+      <label>Project Image</label>
+      <input type="file" id="imageFile" accept="image/*" />
+      <input type="hidden" id="imageUrl" />
+      <img id="imagePreview" style="display:none; max-width: 200px;" />
+
+      <button type="submit">Save</button>
+      <a href="dashboard.html" class="btn-outline">Cancel</a>
+    </form>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/project-form.js"></script>
+</body>
+</html>
