@@ -3,17 +3,9 @@ const router = express.Router();
 const upload = require("../middleware/upload.middleware");
 const verifyToken = require("../middleware/auth.middleware");
 const { uploadFile, deleteFile } = require("../services/upload.service");
+const { uploadCv } = require('../controllers/cv.controller');
 
-router.post('/cv', verifyToken, upload.single('file'), async (req, res) => {
-    try {
-        if (!req.file) return res.status(400).json({ message: "No file uploaded!" });
-        const url = await uploadFile(req.file.buffer, req.file.originalname, req.file.mimetype, 'cv');
-        res.json({url});
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Error uploading file!" });
-    }
-});
+router.post('/cv', verifyToken, upload.single('file'), uploadCv);
 
 router.post('/project-image', verifyToken, upload.single('file'), async (req, res) => {
     try {
